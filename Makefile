@@ -51,7 +51,7 @@ VID = 0x1209
 
 
 # USB product ID (PID) - The Keyboardio Model 01 Bootloader PID
-PID = 0x2300
+PID = 0x2302
 
 # MCU name
 MCU = atmega32u4
