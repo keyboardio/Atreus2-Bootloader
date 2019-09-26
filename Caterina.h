@@ -46,7 +46,6 @@
 #include <stdbool.h>
 
 #include "Descriptors.h"
-#include "i2c.h"
 
 #include <LUFA/Drivers/USB/USB.h>
 /* Macros: */
@@ -66,21 +65,6 @@
 #define SOFTWARE_IDENTIFIER          "CATERINA"
 
 #define CPU_PRESCALE(n)	(CLKPR = 0x80, CLKPR = (n))
-#define LED_SETUP()		DDRB |= (1<<0); DDRD |= (1<<5);
-#define L_LED_OFF()		PORTD &= ~(1<<5)
-#define L_LED_ON()		PORTD |= (1<<5)
-#define L_LED_TOGGLE()	PORTD ^= (1<<5)
-#if DEVICE_PID == 0x0037	// polarity of the RX and TX LEDs is reversed on the Micro
-#define TX_LED_OFF()	PORTD &= ~(1<<5)
-#define TX_LED_ON()		PORTD |= (1<<5)
-#define RX_LED_OFF()	PORTB &= ~(1<<0)
-#define RX_LED_ON()		PORTB |= (1<<0)
-#else
-#define TX_LED_OFF()	PORTD |= (1<<5)
-#define TX_LED_ON()		PORTD &= ~(1<<5)
-#define RX_LED_OFF()	PORTB |= (1<<0)
-#define RX_LED_ON()		PORTB &= ~(1<<0)
-#endif
 
 /* Type Defines: */
 /** Type define for a non-returning pointer to the start of the loaded application in flash memory. */
@@ -88,7 +72,6 @@ typedef void (*AppPtr_t)(void) ATTR_NO_RETURN;
 
 /* Function Prototypes: */
 void StartSketch(void);
-void LEDPulse(void);
 
 void CDC_Task(void);
 void SetupHardware(void);
