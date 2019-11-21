@@ -50,7 +50,7 @@
 VID = 0x1209
 
 
-# USB product ID (PID) - The Keyboardio Model 01 Bootloader PID
+# USB product ID (PID) - The Keyboardio Atreus Bootloader PID
 PID = 0x2302
 
 # MCU name

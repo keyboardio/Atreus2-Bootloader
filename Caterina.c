@@ -88,12 +88,10 @@ void StartSketch(void) {
 
 static inline void CheckReprogrammingKey(void) {
 
-    // Light up PF0 and read PF1
-
-    DDRF &= ~_BV(1); // make the col pin an input
-    DDRF |= _BV(0); // make the row pin an output
-    PORTF |= _BV(1); // turn on pullup
-    PORTF &= ~_BV(0); // make our output low
+    DDRF &= ~_BV(7); // make the col 0 pin an input
+    DDRF |= _BV(1); // make the row 3 pin an output
+    PORTF |= _BV(7); // turn on pullup
+    PORTF &= ~_BV(1); // make our output low
 
     // we need a moment to get the read, or we get some real weird behavior
     // specifically, at random intervals, we end up in the bootloader on first boot
@@ -102,9 +100,9 @@ static inline void CheckReprogrammingKey(void) {
     // I (jesse) believe that the issue is that we were getting our reads
     // before the ATTiny had fully get reset
     _delay_ms(5);
-    if ( PINF & _BV(1)) { // If the pin is hot
+    if ( PINF & _BV(7)) { // If the pin is hot
         _delay_ms(10); // debounce
-        if (PINF & _BV(1)) { // If it's still hot, no key was pressed
+        if (PINF & _BV(7)) { // If it's still hot, no key was pressed
             // Start the sketch
             StartSketch();
         }

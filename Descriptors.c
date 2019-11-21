@@ -187,12 +187,12 @@ const USB_Descriptor_String_t LanguageString = {
  *  Descriptor.
  */
 const USB_Descriptor_String_t ProductString = {
-    .Header                 = {.Size = USB_STRING_LEN(9), .Type = DTYPE_String},
+    .Header                 = {.Size = USB_STRING_LEN(18), .Type = DTYPE_String},
 
-#if DEVICE_PID == 0x2300
-    .UnicodeString          = L"Model 01 "
+#if DEVICE_PID == 0x2302
+    .UnicodeString          =             L"Atreus Bootloader"
 #else
-    .UnicodeString			= L"IO board "
+    .UnicodeString			= L"IO board         "
 #endif
 };
 
@@ -208,7 +208,7 @@ const USB_Descriptor_String_t ManufNameString = {
 
 const USB_Descriptor_String_t SerialNumString = {
     .Header  = { .Size = USB_STRING_LEN(6), .Type = DTYPE_String},
-    .UnicodeString = L"kbio01"
+    .UnicodeString = L"atreus"
 };
 
 /** This function is called by the library when in device mode, and must be overridden (see LUFA library "USB Descriptors"
